@@ -1,0 +1,21 @@
+﻿@model Sample.Web.Models.SampleViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sample page</h2>
+
+@if (Model == null || string.IsNullOrEmpty(Model.Result))
+{
+    using (Html.BeginForm("ProcessDate", "Sample", FormMethod.Post))
+    {
+         @Html.TextBoxFor(m => m.Date, new {placeholder = "Enter date"})
+
+         <input type="submit" value="Submit" />
+    }
+}
+else
+{
+    <h5>@Model.Result</h5>
+}
